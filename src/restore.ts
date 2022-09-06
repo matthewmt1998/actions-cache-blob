@@ -28,11 +28,16 @@ async function run(): Promise<void> {
         const cachePaths = utils.getInputAsArray(Inputs.Path, {
             required: true
         });
+        const containerName = core.getInput(Inputs.ContainerName);
+        const connectionString = core.getInput(Inputs.ConnectionString);
 
         const cacheKey = await cache.restoreCache(
             cachePaths,
             primaryKey,
-            restoreKeys
+            restoreKeys,
+            undefined,
+            containerName,
+            connectionString
         );
 
         if (!cacheKey) {

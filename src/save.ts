@@ -43,10 +43,12 @@ async function run(): Promise<void> {
         const cachePaths = utils.getInputAsArray(Inputs.Path, {
             required: true
         });
+        const containerName = core.getInput(Inputs.ContainerName);
+        const connectionString = core.getInput(Inputs.ConnectionString);
 
         const cacheId = await cache.saveCache(cachePaths, primaryKey, {
             uploadChunkSize: utils.getInputAsInt(Inputs.UploadChunkSize)
-        });
+        }, containerName, connectionString);
 
         if (cacheId != -1) {
             core.info(`Cache saved with key: ${primaryKey}`);
