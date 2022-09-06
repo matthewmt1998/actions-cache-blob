@@ -2,7 +2,9 @@ export enum Inputs {
     Key = "key",
     Path = "path",
     RestoreKeys = "restore-keys",
-    UploadChunkSize = "upload-chunk-size"
+    UploadChunkSize = "upload-chunk-size",
+    ConnectionString = "connection-string",
+    ContainerName = "container-name"
 }
 
 export enum Outputs {
