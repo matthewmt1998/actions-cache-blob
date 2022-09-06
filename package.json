@@ -23,7 +23,7 @@
   "author": "GitHub",
   "license": "MIT",
   "dependencies": {
-    "@actions/cache": "https://gitpkg.now.sh/matthewmt1998/actions-toolkit-blob/packages/cache?azure-blob",
+    "@actions/cache": "https://gitpkg.now.sh/matthewmt1998/actions-toolkit-blob/packages/cache?main",
     "@actions/core": "^1.7.0",
     "@actions/exec": "^1.1.1",
     "@actions/io": "^1.1.2"
