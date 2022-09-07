@@ -26,7 +26,7 @@ jobs:
 
     - name: Cache Primes
       id: cache-primes
-      uses: actions/cache@v3
+      uses: matthewmt1998/actions-cache-blob@main
       with:
         path: prime-numbers
         key: ${{ runner.os }}-primes
