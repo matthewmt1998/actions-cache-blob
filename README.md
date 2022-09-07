@@ -4,6 +4,43 @@
 
 This library provides Azure blob storage Backend for `@actions/cache`.
 
+# Changes 
+
+### Inputs
+* `container-name` - The container name in azure blob storage.
+* `connection-string` - The connection string to azure blob storage.
+
+### Example workflow
+
+```yaml
+name: Caching Primes
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: matthewmt1998/actions-cache-blob@main
+
+    - name: Cache Primes
+      id: cache-primes
+      uses: actions/cache@v3
+      with:
+        path: prime-numbers
+        key: ${{ runner.os }}-primes
+        connection-string: ${{ secrets.CONNECTION_STRING }}
+        container-name: 'container-name'
+
+    - name: Generate Prime Numbers
+      if: steps.cache-primes.outputs.cache-hit != 'true'
+      run: /generate-primes.sh -d prime-numbers
+
+    - name: Use Prime Numbers
+      run: /primes.sh -d prime-numbers
+```
+
 # cache
 
 This action allows caching dependencies and build outputs to improve workflow execution time.
